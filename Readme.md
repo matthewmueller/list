@@ -1,4 +1,3 @@
-
 # list
 
 Generic list component, based on the [menu component](https://github.com/component/menu).
@@ -6,6 +5,8 @@ Generic list component, based on the [menu component](https://github.com/compone
 Useful for creating inboxes, contact lists, etc. 
 
 ![list example](http://f.cl.ly/items/0R073N0e1f0b0a390z3Y/Screen%20Shot%202012-10-21%20at%201.51.31%20PM.png)
+
+![inbox example](http://f.cl.ly/items/0G091L250Q2c0n002b0b/Screen%20Shot%202012-10-21%20at%204.40.04%20PM.png)
   
 ## Installation
 
