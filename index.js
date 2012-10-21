@@ -43,7 +43,7 @@ List.prototype.template = function(str) {
  */
 
 List.prototype.tpl = function(text) {
-  return '<li><a href="#">' + text + '</a></li>';
+  return '<a href="#">' + text + '</a>';
 };
 
 /**
