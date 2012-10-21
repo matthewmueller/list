@@ -112,10 +112,10 @@ list.add({ name : 'apple' }, function(item) {
 })
 ```
 
-You can also use arrays
+You can also use arrays:
 
 ```js
-list.add([{ name : apple }, { name : pear }]);
+list.add([{ name : 'apple' }, { name : 'pear' }]);
 ```
 
 You can also use text and the default template:
