@@ -2,6 +2,8 @@
 # list
 
 Generic list component, based on the [menu component](https://github.com/component/menu).
+
+![list example](http://f.cl.ly/items/0R073N0e1f0b0a390z3Y/Screen%20Shot%202012-10-21%20at%201.51.31%20PM.png)
   
 ## Installation
 
@@ -35,8 +37,8 @@ list.on('select:0', fn)
 <script type="text/template" id="message">
   <a href='#'>
     <span class='from'>{from}</span>
-    <span class='subject'>{subject}</span>
-    <span class='message'>{message}</span>
+    <span class='subject'><strong>{subject}</strong></span>
+    <span class='message'><small>{message}</small></span>
   </a>
 </script>
 ```
