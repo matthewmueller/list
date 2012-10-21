@@ -82,9 +82,9 @@ Also, list item slugs are emitted when clicked.
 
 Create a new `List`:
 
-var List = require('list');
-var list = new List();
-var list = List();
+    var List = require('list');
+    var list = new List(); // or...
+    var list = List();
 
 ### List#template(str)
 
