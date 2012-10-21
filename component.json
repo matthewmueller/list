@@ -9,7 +9,9 @@
     "matthewmueller/emitter" : "*",
     "visionmedia/minstache" : "*"
   },
-  "development": {},
+  "development": {
+    "matthewmueller/hogan" : "*"
+  },
   "scripts": [
     "index.js"
   ],

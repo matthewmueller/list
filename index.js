@@ -3,8 +3,7 @@
  */
 
 var $ = require('jquery'),
-    Emitter = require('emitter'),
-    mu = require('minstache');
+    Emitter = require('emitter');
 
 /**
  * Expose `List`.
@@ -25,6 +24,14 @@ function List() {
 }
 
 /**
+ * Default template engine
+ *
+ * @api public
+ */
+
+List.prototype.engine = require('minstache');
+
+/**
  * Add templating
  *
  * @return {List}
@@ -32,7 +39,8 @@ function List() {
  */
 
 List.prototype.template = function(str) {
-  this.tpl = mu.compile('<li>' + str + '</li>');
+  this.tpl = this.engine.compile('<li>' + str + '</li>');
+  return this;
 };
 
 /**

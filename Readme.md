@@ -13,7 +13,7 @@ Useful for creating inboxes, contact lists, etc.
 
 ## Features
 
-* Custom templating support, using [minstache](https://github.com/visionmedia/minstache).
+* Custom templating support, defaulting to [minstache](https://github.com/visionmedia/minstache).
 * Events for composition
 * Structural CSS
 * Fluent API
@@ -93,10 +93,16 @@ var list = List();
 
 ### List#template(str)
 
-Add a template string to be used when adding items. The internal templating engine is [minstache](https://github.com/visionmedia/minstache).
+Add a template string to be used when adding items. The default templating engine is [minstache](https://github.com/visionmedia/minstache).
 
 ```js
 list.template('<li><a href={url}>{text}</a></li>')
+```
+
+You can use another templating engine by overwriting the engine attribute. If you'd like to use hogan.js, check out [matthewmueller/hogan](https://github.com/MatthewMueller/hogan)
+
+```js
+list.engine = require('hogan');
 ```
 
 ### List#add(arr | obj, [fn])
