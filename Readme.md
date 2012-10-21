@@ -102,14 +102,20 @@ Add a template string to be used when adding items. The internal templating engi
 list.template('<li><a href={url}>{text}</a></li>')
 ```
 
-### List#add(arr|obj, [fn])
+### List#add(arr | obj, [fn])
 
-Add a new list item(s). Pass each `obj` into the templating function. When `selected` the optional callback `fn` will be invoked.
+Add new list item(s). Pass each `obj` into the templating function. When `selected` the optional callback `fn` will be invoked.
 
 ```js
 list.add({ name : 'apple' }, function(item) {
   console.log('You selected:', item.name);
 })
+```
+
+You can also use arrays
+
+```js
+list.add([{ name : apple }, { name : pear }]);
 ```
 
 You can also use text and the default template:
