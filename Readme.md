@@ -22,13 +22,6 @@ Generic list component, based on the [menu component](https://github.com/compone
 * `remove` (item) when an item is removed
 * `select` (item) when an item is selected
 
-Also, list item slugs are emitted when clicked.
-
-```js
-list.add('First Item')
-list.on('select:0', fn)
-```
-
 ## Example
 
 ### Message Template:
