@@ -1,0 +1,19 @@
+{
+  "name": "list",
+  "repo": "matthewmueller/list",
+  "description": "Generic list component",
+  "version": "0.0.1",
+  "keywords": [],
+  "dependencies": {
+    "component/jquery" : "*",
+    "matthewmueller/emitter" : "*",
+    "visionmedia/minstache" : "*"
+  },
+  "development": {},
+  "scripts": [
+    "index.js"
+  ],
+  "styles": [
+    "list.css"
+  ]
+}

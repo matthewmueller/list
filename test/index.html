@@ -1,0 +1,57 @@
+<html>
+<head>
+  <title>List Component</title>
+  <link rel="stylesheet" href="../build/build.css">
+</head>
+<body>
+  <h2>List Component</h2>
+  <script src="../build/build.js" type="text/javascript"></script>
+  <script type="text/template" id="message">
+    <a href='#'>
+      <span class='from'>{from}</span>
+      <span class='subject'>{subject}</span>
+      <span class='message'>{message}</span>
+    </a>
+  </script>
+
+  <script type="text/javascript">
+    var List = require('list'),
+        inbox = new List;
+
+    inbox.template(document.getElementById('message').text)
+
+    var messages = [
+      { from : 'jim', subject : 'hey', message : 'blah'},
+      { from : 'matt', subject : 'sup', message : 'cool'},
+      { from : 'drew', subject : 'howdy', message : 'yah'},
+    ]
+
+    inbox.add(messages, function(message) {
+      console.log('invoked fn', message);
+    })
+
+    inbox.el.appendTo('body');
+
+    inbox.on('add', function(message) {
+      console.log('message added:', message);
+    });
+
+    inbox.on('remove', function(message) {
+      console.log('message removed:', message);
+    })
+
+    inbox.on('select', function(message) {
+      console.log('message selected:', message);
+    });
+
+    inbox.add({
+      from : 'zak',
+      subject : 'no way',
+      message : 'crazy'
+    });
+
+    inbox.remove(3);
+
+  </script>
+</body>
+</html>
