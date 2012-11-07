@@ -1,5 +1,13 @@
 var List = require('list'),
-    inbox = new List;
+    inbox = new List,
+    hogan = require('matthewmueller-hogan');
+
+/**
+ * Templating
+ */
+
+var str = document.getElementById('message-template').text,
+    tpl = hogan.compile(str);
 
 /**
  * Default message
@@ -42,9 +50,7 @@ var message2 = {
 };
 
 inbox.el.addClass('inbox');
-
-inbox.engine = require('matthewmueller-hogan');
-inbox.template(document.getElementById('message-template').text);
+inbox.template(tpl);
 inbox.add(message1);
 inbox.add(message2);
 inbox.el.appendTo('body');

@@ -6,14 +6,14 @@
   "keywords": [],
   "dependencies": {
     "component/jquery" : "*",
-    "matthewmueller/emitter" : "*",
-    "visionmedia/minstache" : "*"
+    "matthewmueller/emitter" : "*"
   },
-  "development": {
+  "development" : {
     "matthewmueller/hogan" : "*"
   },
+  "main" : "list.js",
   "scripts": [
-    "index.js"
+    "list.js"
   ],
   "styles": [
     "list.css"

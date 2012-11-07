@@ -24,22 +24,14 @@ function List() {
 }
 
 /**
- * Default template engine
- *
- * @api public
- */
-
-List.prototype.engine = require('minstache');
-
-/**
  * Add templating
  *
  * @return {List}
  * @api public
  */
 
-List.prototype.template = function(str) {
-  this.tpl = this.engine.compile('<li>' + str + '</li>');
+List.prototype.template = function(fn) {
+  this.tpl = fn;
   return this;
 };
 
@@ -71,7 +63,7 @@ List.prototype.tpl = function(text) {
 List.prototype.add = function(arr, fn) {
   arr = Array.isArray(arr) ? arr : [arr];
   var len = arr.length;
-  
+
   for(var i = 0; i < len; i++) this.addItem(arr[i], fn);
   return this;
 };
@@ -86,7 +78,7 @@ List.prototype.add = function(arr, fn) {
 List.prototype.addItem = function(obj, fn) {
   var self = this,
       cid = this.cid++,
-      el = $(this.tpl(obj));
+      el = $('<li>').html(this.tpl(obj));
 
   el.addClass('list-item-' + cid)
     .appendTo(this.el)
