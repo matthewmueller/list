@@ -2,12 +2,12 @@
 
 Generic list component, based on the [menu component](https://github.com/component/menu).
 
-Useful for creating inboxes, contact lists, etc. 
+Useful for creating inboxes, contact lists, etc.
 
 ![list example](http://f.cl.ly/items/0R073N0e1f0b0a390z3Y/Screen%20Shot%202012-10-21%20at%201.51.31%20PM.png)
 
 ![inbox example](http://f.cl.ly/items/0G091L250Q2c0n002b0b/Screen%20Shot%202012-10-21%20at%204.40.04%20PM.png)
-  
+
 ## Installation
 
     $ component install matthewmueller/list
@@ -43,9 +43,12 @@ Useful for creating inboxes, contact lists, etc.
 
 ```js
 var List = require('list'),
-    inbox = new List;
+    inbox = new List,
+    hogan = require('matthewmueller-hogan'),
+    message = document.getElementById('message').text,
+    tpl = hogan.compile(message);
 
-inbox.template(document.getElementById('message').text)
+inbox.template(tpl)
 
 var messages = [
   { from : 'jim', subject : 'hey', message : 'blah'},
@@ -80,7 +83,7 @@ inbox.add({
 inbox.remove(3);
 ```
 
-## API 
+## API
 
 ### List()
 
@@ -92,19 +95,9 @@ var list = new List(); // or...
 var list = List();
 ```
 
-### List#template(str)
+### List#template(fn)
 
-Add a template string to be used when adding items. The default templating engine is [minstache](https://github.com/visionmedia/minstache).
-
-```js
-list.template('<li><a href={url}>{text}</a></li>')
-```
-
-You can use another templating engine by overwriting the engine attribute. If you'd like to use hogan.js, check out [matthewmueller/hogan](https://github.com/MatthewMueller/hogan)
-
-```js
-list.engine = require('hogan');
-```
+Add a template `fn` to be used when adding items.
 
 ### List#add(arr | obj, [fn])
 
