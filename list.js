@@ -36,17 +36,6 @@ List.prototype.template = function(fn) {
 };
 
 /**
- * Default template
- *
- * @return {String}
- * @api private
- */
-
-List.prototype.tpl = function(text) {
-  return '<a href="#">' + text + '</a>';
-};
-
-/**
  * Identifier, used to identify list items. This allows
  * you to remove menu items by passing in models or
  * refresh single elements
@@ -78,13 +67,10 @@ List.prototype.identifier = function(item) {};
  */
 
 List.prototype.add = function(obj, fn, _action) {
-  // This is to make up for backbone passing extra params through "add"
-  fn = (fn && 'function' == typeof fn) ? fn : function() {};
-
   var self = this,
-      json = (obj.toJSON) ? obj.toJSON() : obj,
       cid = this.cid++,
-      el = $('<li>').html(this.tpl(obj));
+      tpl = (this.tpl) ? this.tpl(obj) : obj;
+      el = $('<li>').html(tpl);
 
   el.addClass('list-item-' + cid)
     [_action || 'appendTo'](this.el)
