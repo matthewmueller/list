@@ -47,53 +47,72 @@ List.prototype.tpl = function(text) {
 };
 
 /**
- * Add list item with the given `arr` and optional callback `fn`.
+ * Identifier, used to identify list items. This allows
+ * you to remove menu items by passing in models or
+ * refresh single elements
+ *
+ * Example:
+ *
+ * function(item) {
+ *   return item.cid;
+ * }
+ *
+ * TODO: Finish me
+ */
+
+List.prototype.identifier = function(item) {};
+
+/**
+ * Add list item with the given `obj` and optional callback `fn`.
  * Emits an `add` event with the supplied `obj`.
  *
  * When the item is clicked `fn()` will be invoked, along with firing a
  * `select` event. If a `slug` is present, it will also fire the event
  * `slug`, passing the `obj`.
  *
- * @param {Array} arr
+ * @param {Object} obj
  * @param {Function} fn
+ * @param {Boolean} _action (private)
  * @return {List}
  * @api public
  */
 
-List.prototype.add = function(arr, fn) {
-  arr = Array.isArray(arr) ? arr : [arr];
-  var len = arr.length;
+List.prototype.add = function(obj, fn, _action) {
+  // This is to make up for backbone passing extra params through "add"
+  fn = (fn && 'function' == typeof fn) ? fn : function() {};
 
-  for(var i = 0; i < len; i++) this.addItem(arr[i], fn);
-  return this;
-};
-
-/**
- * Add a single list item
- *
- * @param {Object}   obj
- * @param {Function} fn
- */
-
-List.prototype.addItem = function(obj, fn) {
   var self = this,
+      json = (obj.toJSON) ? obj.toJSON() : obj,
       cid = this.cid++,
       el = $('<li>').html(this.tpl(obj));
 
   el.addClass('list-item-' + cid)
-    .appendTo(this.el)
+    [_action || 'appendTo'](this.el)
     .click(function(e) {
       e.preventDefault();
       e.stopPropagation();
       self.emit('select', obj);
       self.emit('select:'+cid, obj);
-      if(fn) fn(obj);
+      fn(obj);
     });
 
   this.emit('add', obj);
   this.items[cid] = obj;
 
   return this;
+};
+
+/**
+ * Add an item to the top of the list
+ *
+ * @param {Object} obj
+ * @param {Function} fn
+ * @return {List}
+ * @api public
+ */
+
+List.prototype.shift = function(obj, fn) {
+  return this.add(obj, fn, 'prependTo');
 };
 
 /**
