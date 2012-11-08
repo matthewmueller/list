@@ -14,7 +14,6 @@ Useful for creating inboxes, contact lists, etc.
 
 ## Features
 
-* Custom templating support, defaulting to [minstache](https://github.com/visionmedia/minstache).
 * Events for composition
 * Structural CSS
 * Fluent API
@@ -32,9 +31,9 @@ Useful for creating inboxes, contact lists, etc.
 ```html
 <script type="text/template" id="message">
   <a href='#'>
-    <span class='from'>{from}</span>
-    <span class='subject'><strong>{subject}</strong></span>
-    <span class='message'><small>{message}</small></span>
+    <span class='from'>{{from}}</span>
+    <span class='subject'><strong>{{subject}}</strong></span>
+    <span class='message'><small>{{message}}</small></span>
   </a>
 </script>
 ```
