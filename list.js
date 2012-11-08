@@ -69,7 +69,7 @@ List.prototype.identifier = function(item) {};
 List.prototype.add = function(obj, fn, _action) {
   var self = this,
       cid = this.cid++,
-      tpl = (this.tpl) ? this.tpl(obj) : obj;
+      tpl = (this.tpl && typeof this.tpl == 'function') ? this.tpl(obj) : obj;
       el = $('<li>').html(tpl);
 
   el.addClass('list-item-' + cid)
