@@ -79,7 +79,7 @@ List.prototype.add = function(obj, fn, _action) {
       e.stopPropagation();
       self.emit('select', obj);
       self.emit('select:'+cid, obj);
-      fn(obj);
+      if(fn) fn(obj);
     });
 
   this.emit('add', obj);
