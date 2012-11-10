@@ -6,7 +6,7 @@
   "keywords": [],
   "dependencies": {
     "component/jquery" : "*",
-    "matthewmueller/emitter" : "*"
+    "component/emitter" : "*"
   },
   "development" : {
     "matthewmueller/hogan" : "*"

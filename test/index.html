@@ -7,18 +7,23 @@
   <h2>List Component</h2>
   <script src="../build/build.js" type="text/javascript"></script>
   <script type="text/template" id="message">
-    <a href='#'>
-    <span class='from'>{from}</span>
-    <span class='subject'>{subject}</span>
-    <span class='message'>{message}</span>
-    </a>
+    <div class="message">
+      <a href='#'>
+        <span class='from'>{{from}}</span>
+        <span class='subject'>{{subject}}</span>
+        <span class='message'>{{message}}</span>
+      </a>
+    </div>
   </script>
 
   <script type="text/javascript">
     var List = require('list'),
+        hogan = require('matthewmueller-hogan'),
+        str = document.getElementById('message').text,
+        tpl = hogan.compile(str),
         inbox = new List;
 
-    inbox.template(document.getElementById('message').text)
+    inbox.template(tpl);
 
     var messages = [
       { from : 'jim', subject : 'hey', message : 'blah'},
@@ -26,9 +31,9 @@
       { from : 'drew', subject : 'howdy', message : 'yah'},
     ]
 
-    inbox.add(messages, function(message) {
-      console.log('invoked fn', message);
-    })
+    messages.forEach(function(message) {
+      inbox.add(message, function(m) { console.log('invoked fn', m); })
+    });
 
     inbox.el.appendTo('body');
 

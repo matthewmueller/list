@@ -17,11 +17,16 @@ module.exports = List;
 
 function List() {
   if(!(this instanceof List)) return new List;
-  Emitter.call(this);
   this.items = {};
   this.cid = 0;
   this.el = $('<ul class="list">');
 }
+
+/**
+ * Mixin `Emitter`
+ */
+
+Emitter(List.prototype);
 
 /**
  * Add templating
