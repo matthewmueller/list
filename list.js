@@ -95,6 +95,18 @@ List.prototype.push = function(obj, fn, _action) {
 };
 
 /**
+ * Clear a list
+ *
+ * @return {List}
+ */
+
+List.prototype.clear = function() {
+  this.el.find('li').remove();
+  this.emit('clear');
+  return this;
+};
+
+/**
  * Add an item to the top of the list
  *
  * @param {Object} obj
