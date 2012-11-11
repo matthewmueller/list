@@ -71,7 +71,8 @@ List.prototype.identifier = function(item) {};
  * @api public
  */
 
-List.prototype.add = function(obj, fn, _action) {
+List.prototype.add =
+List.prototype.push = function(obj, fn, _action) {
   var self = this,
       cid = this.cid++,
       tpl = (this.tpl && typeof this.tpl == 'function') ? this.tpl(obj) : obj;
