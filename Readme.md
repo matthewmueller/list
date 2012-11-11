@@ -100,7 +100,17 @@ Add a template `fn` to be used when adding items.
 
 ### List#add(arr | obj, [fn])
 
-Add new list item(s). Pass each `obj` into the templating function. When `selected` the optional callback `fn` will be invoked.
+Add a new list item. Pass each `obj` into the templating function. When `selected` the optional callback `fn` will be invoked.
+
+```js
+list.add({ name : 'apple' }, function(item) {
+  console.log('You selected:', item.name);
+})
+```
+
+### List#unshift(arr | obj, [fn])
+
+Add a new list item to the front of the list. Pass each `obj` into the templating function. When `selected` the optional callback `fn` will be invoked.
 
 ```js
 list.add({ name : 'apple' }, function(item) {

@@ -102,7 +102,7 @@ List.prototype.add = function(obj, fn, _action) {
  * @api public
  */
 
-List.prototype.shift = function(obj, fn) {
+List.prototype.unshift = function(obj, fn) {
   return this.add(obj, fn, 'prependTo');
 };
 
